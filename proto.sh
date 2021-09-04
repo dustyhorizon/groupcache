@@ -11,6 +11,10 @@ protoc -I=$PROTO_DIR \
     --go_out=$PROTO_DIR \
     $PROTO_DIR/groupcache.proto
 
+protoc -I=testpb \
+    --go_out=testpb \
+    testpb/test.proto
+
 protoc -I=$PROTO_DIR \
    --go_out=. \
     $PROTO_DIR/example.proto

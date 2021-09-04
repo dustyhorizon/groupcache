@@ -434,8 +434,8 @@ func (g *Group) getLocally(ctx context.Context, key string, dest Sink) (ByteView
 
 func (g *Group) getFromPeer(ctx context.Context, peer ProtoGetter, key string) (ByteView, error) {
 	req := &pb.GetRequest{
-		Group: &g.name,
-		Key:   &key,
+		Group: g.name,
+		Key:   key,
 	}
 	res := &pb.GetResponse{}
 	err := peer.Get(ctx, req, res)
@@ -474,8 +474,8 @@ func (g *Group) setFromPeer(ctx context.Context, peer ProtoGetter, k string, v [
 
 func (g *Group) removeFromPeer(ctx context.Context, peer ProtoGetter, key string) error {
 	req := &pb.GetRequest{
-		Group: &g.name,
-		Key:   &key,
+		Group: g.name,
+		Key:   key,
 	}
 	return peer.Remove(ctx, req)
 }

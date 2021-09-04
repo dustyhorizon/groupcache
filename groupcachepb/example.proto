@@ -1,8 +1,9 @@
 syntax = "proto3";
 
-option go_package = "groupcache_test";
-
 package groupcachepb;
+
+option optimize_for = SPEED;
+option go_package = ".;groupcache_test";
 
 message User {
     string id  = 1;

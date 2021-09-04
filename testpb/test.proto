@@ -14,9 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-syntax = "proto2";
+syntax = "proto3";
 
 package testpb;
+
+option optimize_for = SPEED;
+option go_package = ".;testpb";
 
 message TestMessage {
   optional string name = 1;
@@ -24,8 +27,8 @@ message TestMessage {
 }
 
 message TestRequest {
-  required string lower = 1; // to be returned upper case
-  optional int32 repeat_count = 2 [default = 1]; // .. this many times
+  string lower = 1; // to be returned upper case
+  optional int32 repeat_count = 2; // .. this many times
 }
 
 message TestResponse {
@@ -57,7 +60,7 @@ message StatsResponse {
 message Empty {}
 
 service GroupCacheTest {
-  rpc InitPeers(Empty) returns (Empty) {};
-  rpc Get(TestRequest) returns (TestResponse) {};
-  rpc GetStats(Empty) returns (StatsResponse) {};
+  rpc InitPeers(Empty) returns (Empty);
+  rpc Get(TestRequest) returns (TestResponse);
+  rpc GetStats(Empty) returns (StatsResponse);
 }
