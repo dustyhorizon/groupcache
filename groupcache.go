@@ -465,8 +465,8 @@ func (g *Group) setFromPeer(ctx context.Context, peer ProtoGetter, k string, v [
 	}
 	req := &pb.SetRequest{
 		Expire: &expire,
-		Group:  &g.name,
-		Key:    &k,
+		Group:  g.name,
+		Key:    k,
 		Value:  v,
 	}
 	return peer.Set(ctx, req)
