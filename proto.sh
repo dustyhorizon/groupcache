@@ -5,16 +5,14 @@ set -e
 set -u
 set -x
 
-PROTO_DIR=groupcachepb
-
-protoc -I=$PROTO_DIR \
-    --go_out=$PROTO_DIR \
-    $PROTO_DIR/groupcache.proto
+protoc -I=groupcachepb \
+    --go_out=groupcachepb \
+    groupcachepb/groupcache.proto
 
 protoc -I=testpb \
     --go_out=testpb \
     testpb/test.proto
 
-protoc -I=$PROTO_DIR \
-   --go_out=. \
-    $PROTO_DIR/example.proto
+protoc -I=examplepb \
+   --go_out=examplepb \
+    examplepb/example.proto
